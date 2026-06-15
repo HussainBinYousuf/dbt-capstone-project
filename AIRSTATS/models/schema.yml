@@ -1,0 +1,14 @@
+sources:
+  - name: AIRSTATS
+    schema: raw
+    tables:
+      - name: airports
+        identifier: raw_airports
+
+      - name: comments
+        identifier: raw_airport_comments
+      
+      - name: runways
+        identifier: raw_runways
+    
+

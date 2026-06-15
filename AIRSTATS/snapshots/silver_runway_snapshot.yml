@@ -1,0 +1,7 @@
+snapshots:
+- name: scd_silver_runways
+  relation: ref('silver_runways')
+  config:
+    unique_key: RUNWAY_ID
+    strategy: check
+    check_cols: all

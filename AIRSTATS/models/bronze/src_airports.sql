@@ -1,0 +1,20 @@
+
+{{
+    config(
+        MATERIALIZED = 'ephemeral'
+    )
+}}
+
+WITH raw_airports AS(
+    SELECT * FROM {{source('AIRSTATS','airports')}}
+)
+SELECT 
+    ident AS airport_ident,
+    type AS airport_type,
+    name AS airport_name,
+    latitude_deg AS airport_lat,
+    longitude_deg AS airport_long,
+    continent,
+    iso_country,
+    iso_region
+    FROM raw_airports

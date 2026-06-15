@@ -1,0 +1,18 @@
+models:
+  - name: silver_airport_comments
+    description: "Silver-layer airport comments data transformed from raw source records, containing cleaned and validated comment information linked to airports."
+
+    columns:
+      - name: comment_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: airport_ident
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('silver_airports')
+                field: airport_ident
+              config:
+                severity: warn

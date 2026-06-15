@@ -1,0 +1,34 @@
+models:
+  - name: silver_runways
+    description: "Silver-layer runway data transformed from raw source records, enriched with standardized attributes and data quality checks."
+
+    columns:
+      - name: runway_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: airport_ident
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('silver_airports')
+                field: airport_ident
+              config:
+                severity: warn
+
+      - name: runway_lighted
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - true
+                  - false
+
+      - name: runway_closed
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - true
+                  - false

@@ -1,0 +1,27 @@
+models:
+  - name: silver_airports
+    description: "Silver-layer airport data transformed from raw source records, with standardized formats, cleaned values, and quality validations applied."
+
+    columns:
+      - name: airport_ident
+        data_tests:
+          - unique
+          - not_null
+
+      - name: airport_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - small_airport
+                  - medium_airport
+                  - large_airport
+                  - heliport
+                  - seaplane_base
+                  - balloonport
+                  - closed
+
+
+
+                  
